@@ -1,6 +1,6 @@
 ---
 - name: Execute ls -la command
-  hosts: ubuntu-prod
+  hosts: ubuntu_prod
   gather_facts: no
   remote_user: devops
   tasks:
