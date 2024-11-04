@@ -2,6 +2,7 @@
 - name: Execute ls -la command
   hosts: ubuntu-prod
   gather_facts: no
+  remote_user: devops
   tasks:
     - name: List files in long format
       shell: ls -la
