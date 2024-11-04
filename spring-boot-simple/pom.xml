@@ -109,9 +109,6 @@
         </plugins>
     </build>
 
-    <properties>
-        <start-class>com.baeldung.bootstrap.Application</start-class>
-        <subethasmtp.version>7.0.2</subethasmtp.version>
-    </properties>
+
 
 </project>
