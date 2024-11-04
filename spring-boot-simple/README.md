@@ -1,14 +1,9 @@
-## Spring Boot Intro Ebook
+## Spring Boot Artifacts 2
 
-This module contains articles about Spring Boot that are part of the Spring Boot Intro Ebook.
+This module contains articles about configuring the Spring Boot build process 2.
 
-### Relevant Articles
+### Relevant Articles:			
 
-- [Spring Boot Tutorial – Bootstrap a Simple Application](https://www.baeldung.com/spring-boot-start)
-- [Intro to Spring Boot Starters](https://www.baeldung.com/spring-boot-starters)
-- [Spring Boot Annotations](https://www.baeldung.com/spring-boot-annotations)
-- [Guide to @ConfigurationProperties in Spring Boot](https://www.baeldung.com/configuration-properties-in-spring-boot)
-- [Testing in Spring Boot](https://www.baeldung.com/spring-boot-testing)
-- [Logging in Spring Boot](https://www.baeldung.com/spring-boot-logging)
-- [Spring Boot Actuator](https://www.baeldung.com/spring-boot-actuators)
-
+- [Difference Between spring-boot:repackage and Maven package](https://www.baeldung.com/spring-boot-repackage-vs-mvn-package)
+- [Fixing the No Main Manifest Attribute in Spring Boot](https://www.baeldung.com/spring-boot-fix-the-no-main-manifest-attribute)
+- More articles: [[<-- prev]](/spring-boot-modules/spring-boot-artifacts)
