@@ -2,7 +2,7 @@
 - name: Execute ls -la command
   hosts: devops_prod
   gather_facts: no
-  remote_user: devops
+  remote_user: ansible
   tasks:
     - name: List files in long format
       shell: ls -la
