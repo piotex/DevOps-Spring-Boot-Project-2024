@@ -2,6 +2,6 @@
 - hosts: all_servers
   become: yes
   roles:
-    - setup_service
+    - ../roles/setup_service
 
 
