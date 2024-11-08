@@ -22,7 +22,7 @@
   register: curl_output
 
 - name: Get output from curl command 5415
-  shell: "echo {{curl_output.stdout}} | grep downloadUrl | grep war\" | grep spring-boot-simple | awk ' { print $3 }' | tr -d \" | tr -d ,  | sort | tail -n1"
+  shell: "echo {{curl_output.stdout | grep downloadUrl | grep war\" | grep spring-boot-simple | awk ' { print $3 }' | tr -d \" | tr -d ,  | sort | tail -n1 }}"
   register: curl_output
 
 - name: Display raw curl output
