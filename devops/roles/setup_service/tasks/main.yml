@@ -49,5 +49,5 @@
 - name: Print failed service status in red
   debug:
     msg: "ERROR: {{ service_status.stdout  }}"
-#  when: "'failed' in service_status.stdout"
+  when: "'failed' in service_status.stdout"
 
