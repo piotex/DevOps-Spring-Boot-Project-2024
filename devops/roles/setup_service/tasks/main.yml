@@ -17,10 +17,6 @@
 
 - name: Get output from curl command
   shell: "curl -s -u admin:Admin12345*** -L -X GET 'http://192.168.56.56:8081/service/rest/v1/search/assets?sort=version&repository=spring-boot-app' | grep downloadUrl | grep war\" | grep spring-boot-simple | awk ' { print $3 }' | tr -d \" | tr -d ,  | sort | tail -n1"
-  register: curl_output2
-
-- name: Get output from curl command aaa
-  shell: "echo slfikjdsoigfjnsdi"
   register: curl_output
 
 - name: Set variable ALA
