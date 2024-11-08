@@ -37,3 +37,11 @@
     enabled: true
     state: started
 
+- name: Get service status
+  ansible.builtin.systemd:
+    name: "{{ service_name }}"  # Replace with your service name
+    register: service_status
+
+- name: Display service status
+  debug:
+    msg: "Service {{ service_name }} is {{ service_status.status.ActiveState }}"
