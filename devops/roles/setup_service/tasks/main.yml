@@ -38,7 +38,7 @@
 #    state: started
 
 - name: Get service status
-  command: systemctl status {{ service_name }}
+  command: systemctl status {{ service_name }} | grep Active
   register: service_status
   ignore_errors: true
 
