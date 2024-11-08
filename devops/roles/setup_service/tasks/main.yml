@@ -21,6 +21,10 @@
   register: curl_output
 
 - name: Get output from curl command 222
+  shell: "echo 'aaaaaaaa' >> test.txt"
+  register: curl_output
+
+- name: Get output from curl command 222
   shell: "cat test.txt"
   register: curl_output
 
