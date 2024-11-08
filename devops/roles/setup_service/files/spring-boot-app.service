@@ -2,7 +2,7 @@
 Description=spring-boot-app
 
 [Service]
-ExecStart=/opt/spring-boot-app.war
+ExecStart=java - jar /opt/spring-boot-app.war
 
 [Install]
 WantedBy=multi-user.target
