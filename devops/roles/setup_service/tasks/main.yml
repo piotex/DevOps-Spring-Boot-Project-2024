@@ -18,7 +18,7 @@
 - name: Get output from curl command
 #  shell: "curl -s -u admin:Admin12345*** -L -X GET 'http://192.168.56.56:8081/service/rest/v1/search/assets?sort=version&repository=spring-boot-app' | grep downloadUrl | grep war\" | grep spring-boot-simple | awk ' { print $3 }' | tr -d \" | tr -d ,  | sort | tail -n1"
 #  shell: "curl -s google.com"
-  shell: "curl -s -u admin:Admin12345*** -L -X GET 'nexus:8081'"
+  shell: "curl -s -u admin:Admin12345*** -L -X GET 'http://192.168.56.56:8081'"
   register: curl_output
 
 - name: Display raw curl output
