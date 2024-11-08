@@ -7,6 +7,3 @@ spring_boot_prod_servers
 [all_servers:children]
 spring_boot_servers
 
-[all:vars]
-service_user=ansible
-service_name=spring-boot-app

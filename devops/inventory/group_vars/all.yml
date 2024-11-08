@@ -1,0 +1,2 @@
+service_user: ansible
+service_name: spring-boot-app
