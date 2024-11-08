@@ -1,0 +1,12 @@
+[spring_boot_prod_servers]
+prod_server_57 ansible_host=192.168.56.57
+
+[spring_boot_servers:children]
+spring_boot_prod_servers
+
+[all_servers:children]
+spring_boot_servers
+
+[all:vars]
+service_user=ansible
+service_name=spring-boot-app

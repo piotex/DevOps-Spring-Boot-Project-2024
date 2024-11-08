@@ -1,4 +1,13 @@
 ---
+- hosts: all_servers
+  become: yes
+  roles:
+    - setup_service
+
+
+
+
+---
 - name: Execute ls -la command
   hosts: devops_prod
   gather_facts: no
