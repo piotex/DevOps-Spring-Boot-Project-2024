@@ -1,49 +1,67 @@
 ---
-- name: Create service user
-  user:
-    name: "{{ service_user }}"
-    state: present
+#- name: Create service user
+#  user:
+#    name: "{{ service_user }}"
+#    state: present
+#
+#- name: Copy systemd service file to server
+#  copy:
+#    src: spring-boot-app.service
+#    dest: /etc/systemd/system/spring-boot-app.service
+#    owner: root
+#    group: root
+#
+#- name: Reload systemd
+#  systemd:
+#    daemon_reload: true
 
-- name: Copy systemd service file to server
-  copy:
-    src: spring-boot-app.service
-    dest: /etc/systemd/system/spring-boot-app.service
-    owner: root
-    group: root
+- name: Get output from curl command
+  shell: "curl -s -u admin:Admin12345*** -L -X GET 'http://192.168.56.56:8081/service/rest/v1/search/assets?sort=version&repository=spring-boot-app' | grep downloadUrl | grep war\" | grep spring-boot-simple | awk ' { print $3 }' | tr -d \" | tr -d ,  | sort | tail -n1"
+  register: curl_output
+  ignore_errors: true
 
-- name: Reload systemd
-  systemd:
-    daemon_reload: true
+- name: Set variable ALA
+  set_fact:
+    ALA: "{{ curl_output.stdout }}"
+
+- name: Display the value of ALA
+  debug:
+    msg: "The value of ALA is: {{ ALA }}"
+
+- name: Display the value of ALAss
+  debug:
+    msg: "The value of ALA is: {{ curl_output.stdout }}"
+
 
 - name: Download spring-boot artefact to server
   shell: sudo curl -u admin:Admin12345***  -L -X GET http://192.168.56.56:8081/repository/spring-boot-app/com/baeldung/spring-boot-simple/spring-boot-simple/1.0.0-SNAPSHOT/spring-boot-simple-1.0.0-20241108.052641-1.war --output /opt/spring-boot-app.war
 
-- name: Set permissions for all files in directory
-  ansible.builtin.file:
-    path: /opt/spring-boot-app.war
-    mode: '777'
-
-- name: Start and enable the service
-  systemd:
-    name: "{{ service_name }}"
-    state: started
-    enabled: yes
-  notify:
-    - Restart my service
-
-- name: Ensure the service is enabled and started
-  systemd:
-    name: "{{ service_name }}.service"
-    enabled: true
-    state: started
-
-- name: Get service status
-  shell: systemctl status {{ service_name }} | grep Active
-  register: service_status
-  ignore_errors: true
-
-- name: Print failed service status in red
-  debug:
-    msg: "ERROR: {{ service_status.stdout_lines | join('\n') }}"
-  when: "'failed' in service_status.stdout_lines | join(' ')"
+#- name: Set permissions for all files in directory
+#  ansible.builtin.file:
+#    path: /opt/spring-boot-app.war
+#    mode: '777'
+#
+#- name: Start and enable the service
+#  systemd:
+#    name: "{{ service_name }}"
+#    state: started
+#    enabled: yes
+#  notify:
+#    - Restart my service
+#
+#- name: Ensure the service is enabled and started
+#  systemd:
+#    name: "{{ service_name }}.service"
+#    enabled: true
+#    state: started
+#
+#- name: Get service status
+#  shell: systemctl status {{ service_name }} | grep Active
+#  register: service_status
+#  ignore_errors: true
+#
+#- name: Print failed service status in red
+#  debug:
+#    msg: "ERROR: {{ service_status.stdout_lines | join('\n') }}"
+#  when: "'failed' in service_status.stdout_lines | join(' ')"
 
