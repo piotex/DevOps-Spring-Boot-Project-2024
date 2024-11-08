@@ -44,7 +44,7 @@
 
 - name: Print service status
   debug:
-    msg: service_status.stdout_lines
+    msg: {{ service_status.stdout_lines | join('\n') }}
 
 - name: Print failed service status in red
   debug:
