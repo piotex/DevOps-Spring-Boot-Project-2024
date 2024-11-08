@@ -16,8 +16,12 @@
 #    daemon_reload: true
 
 - name: Get output from curl command
-  shell: "curl -s -u admin:Admin12345*** -L -X GET 'nexus:8081/service/rest/v1/search/assets?sort=version&repository=spring-boot-app' | grep downloadUrl | grep war\" | grep spring-boot-simple | awk ' { print $3 }' | tr -d \" | tr -d ,  | sort | tail -n1"
+  shell: "curl -s -u admin:Admin12345*** -L -X GET 'nexus:8081/service/rest/v1/search/assets?sort=version&repository=spring-boot-app' | grep downloadUrl | grep war\" | grep spring-boot-simple | awk ' { print $3 }' | tr -d \" | tr -d ,  | sort | tail -n1 > test.txt"
 #  shell: "curl -s google.com"
+  register: curl_output
+
+- name: Get output from curl command 222
+  shell: "cat test.txt"
   register: curl_output
 
 - name: Display raw curl output
