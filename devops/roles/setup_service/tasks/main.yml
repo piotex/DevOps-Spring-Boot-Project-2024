@@ -44,7 +44,7 @@
 
 - name: Print service status
   debug:
-    var: service_status.stdout_lines
+    msg: service_status.stdout_lines
 
 - name: Print failed service status in red
   debug:
