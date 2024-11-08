@@ -27,7 +27,7 @@
 
 - name: Display the value of ALAss
   debug:
-    msg: "latest_snapshot_version: {{ latest_snapshot_version.stdout }}"
+    msg: "latest_snapshot_version: {{ latest_snapshot_version }}"
 
 
 #- name: Download spring-boot artefact to server
