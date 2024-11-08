@@ -11,6 +11,9 @@
     owner: root
     group: root
 
+- name: Download spring-boot artefact to server
+  shell: sudo curl -u admin:Admin12345***  -L -X GET http://192.168.56.56:8081/repository/spring-boot-app/com/baeldung/spring-boot-simple/spring-boot-simple/1.0.0-SNAPSHOT/spring-boot-simple-1.0.0-20241108.052641-1.war --output /opt/spring-boot-app.war
+
 - name: Start and enable the service
   systemd:
     name: "{{ service_name }}"

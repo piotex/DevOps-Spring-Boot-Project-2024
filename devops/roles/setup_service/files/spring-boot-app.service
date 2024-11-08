@@ -2,7 +2,7 @@
 Description=spring-boot-app
 
 [Service]
-ExecStart=/usr/local/bin/my_service
+ExecStart=/opt/spring-boot-app.war
 
 [Install]
 WantedBy=multi-user.target
