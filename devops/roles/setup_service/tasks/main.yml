@@ -48,6 +48,6 @@
 
 - name: Print failed service status in red
   debug:
-    msg: "ERROR: {{ service_status  }}"
-#  when: "'failed' in service_status | join(' ')"
+    msg: "ERROR: {{ service_status.stdout  }}"
+#  when: "'failed' in service_status.stdout"
 
