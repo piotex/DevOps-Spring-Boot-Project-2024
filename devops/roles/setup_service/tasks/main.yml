@@ -32,14 +32,6 @@
     name: "{{ service_name }}"
     state: started
     enabled: yes
-  notify:
-    - Restart my service
-
-- name: Ensure the service is enabled and started
-  systemd:
-    name: "{{ service_name }}.service"
-    enabled: true
-    state: started
 
 - name: Get service status
   shell: systemctl status {{ service_name }} | grep Active
