@@ -26,7 +26,7 @@
 
 
 - name: Get the latest snapshot version"
-  shell: curl --silent http://192.168.56.56:8081/repository/spring-boot-app/com/baeldung/spring-boot-simple/spring-boot-simple/1.0.0-SNAPSHOT/maven-metadata.xml
+  shell: echo "alaslasldalksfakjfdsbdskjhgvbkfdsj" #curl --silent http://192.168.56.56:8081/repository/spring-boot-app/com/baeldung/spring-boot-simple/spring-boot-simple/1.0.0-SNAPSHOT/maven-metadata.xml
   register: latest_snapshot_version
 
 - name: Display the value of ALAss
