@@ -23,7 +23,7 @@
 
 - name: Split the output and set ALA to the last element
   set_fact:
-    ALA: "{{ curl_raw_output.stdout | split(',') | last }}"
+    ALA: "{{ curl_raw_output.stdout | wc -l }}"
 
 - name: Set variable ALA
   set_fact:
