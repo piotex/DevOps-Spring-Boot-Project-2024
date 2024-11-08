@@ -21,8 +21,12 @@
 #  shell: "curl -s -u admin:Admin12345*** -L -X GET 'http://192.168.56.56:8081/service/rest/v1/search/assets?sort=version&repository=spring-boot-app'"
 #  register: curl_output
 
+
+# | sed -n 's|<value>\(.*\)</value>|\1|p' | sed -e 's/^[ \t]*//' | sort -nr | head -1
+
+
 - name: Get the latest snapshot version"
-  shell: curl --silent http://192.168.56.56:8081/repository/spring-boot-app/com/baeldung/spring-boot-simple/spring-boot-simple/1.0.0-SNAPSHOT/maven-metadata.xml | sed -n 's|<value>\(.*\)</value>|\1|p' | sed -e 's/^[ \t]*//' | sort -nr | head -1
+  shell: curl --silent http://192.168.56.56:8081/repository/spring-boot-app/com/baeldung/spring-boot-simple/spring-boot-simple/1.0.0-SNAPSHOT/maven-metadata.xml
   register: latest_snapshot_version
 
 - name: Display the value of ALAss
