@@ -15,27 +15,19 @@
 #  systemd:
 #    daemon_reload: true
 
-- name: Get output from curl command
-#  shell: "curl -s -u admin:Admin12345*** -L -X GET 'http://192.168.56.56:8081/service/rest/v1/search/assets?sort=version&repository=spring-boot-app' | grep downloadUrl | grep war\" | grep spring-boot-simple | awk ' { print $3 }' | tr -d \" | tr -d ,  | sort | tail -n1"
-#  shell: "curl -s google.com"
-  shell: "curl -s -u admin:Admin12345*** -L -X GET 'http://192.168.56.56:8081/service/rest/v1/search/assets?sort=version&repository=spring-boot-app'"
-  register: curl_output
+#- name: Get output from curl command
+##  shell: "curl -s -u admin:Admin12345*** -L -X GET 'http://192.168.56.56:8081/service/rest/v1/search/assets?sort=version&repository=spring-boot-app' | grep downloadUrl | grep war\" | grep spring-boot-simple | awk ' { print $3 }' | tr -d \" | tr -d ,  | sort | tail -n1"
+##  shell: "curl -s google.com"
+#  shell: "curl -s -u admin:Admin12345*** -L -X GET 'http://192.168.56.56:8081/service/rest/v1/search/assets?sort=version&repository=spring-boot-app'"
+#  register: curl_output
 
-- name: Split the output and set ALA to the last element
-  set_fact:
-    ALA: "{{ curl_raw_output.stdout | wc -l }}"
-
-- name: Set variable ALA
-  set_fact:
-    ALA: "{{ curl_output.stdout }}"
-
-- name: Display the value of ALA
-  debug:
-    msg: "The value of ALA is: {{ ALA }}"
+- name: Get the latest snapshot version"
+  shell: curl --silent http://192.168.56.56:8081/repository/spring-boot-app/com/baeldung/spring-boot-simple/spring-boot-simple/1.0.0-SNAPSHOT/maven-metadata.xml | sed -n 's|<value>\(.*\)</value>|\1|p' | sed -e 's/^[ \t]*//' | sort -nr | head -1
+  register: latest_snapshot_version
 
 - name: Display the value of ALAss
   debug:
-    msg: "The value of ALA is: {{ curl_output.stdout }}"
+    msg: "latest_snapshot_version: {{ latest_snapshot_version.stdout }}"
 
 
 #- name: Download spring-boot artefact to server
