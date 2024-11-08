@@ -21,10 +21,10 @@
 
 - name: Display the value of ALAss
   debug:
-    msg: "latest_snapshot_version: {{ latest_snapshot_version.stdout_lines }}"
+    msg: "latest_snapshot_version: {{ latest_snapshot_version.stdout }}"
 
 - name: Download spring-boot artefact to server
-  shell: sudo curl -u admin:Admin12345***  -L -X GET http://192.168.56.56:8081/repository/spring-boot-app/com/baeldung/spring-boot-simple/spring-boot-simple/1.0.0-SNAPSHOT/spring-boot-simple-{{latest_snapshot_version.stdout_lines}}.war --output /opt/spring-boot-app.war
+  shell: sudo curl -u admin:Admin12345***  -L -X GET http://192.168.56.56:8081/repository/spring-boot-app/com/baeldung/spring-boot-simple/spring-boot-simple/1.0.0-SNAPSHOT/spring-boot-simple-{{latest_snapshot_version.stdout}}.war --output /opt/spring-boot-app.war
 
 #- name: Set permissions for all files in directory
 #  ansible.builtin.file:
